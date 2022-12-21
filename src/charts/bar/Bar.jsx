@@ -2,36 +2,25 @@ import ReactEcharts from "echarts-for-react"
 import wineData from '../../wineData.json';
 
 // made categories for finding out average and displaying the data
-let cat1Arr = []
-let cat2Arr = []
-let cat3Arr = []
+let cat1 = 0; let cat2 = 0; let cat3 = 0; let cat1Count = 0; let cat2Count = 0; let cat3Count = 0
 wineData.forEach((item) => {
     if (item.Alcohol === 1) {
-        cat1Arr.push(item["Malic Acid"])
+        cat1 += item["Malic Acid"]
+        cat1Count++
     }
     else if (item.Alcohol === 2) {
-        cat2Arr.push(item["Malic Acid"])
+        cat2 += item["Malic Acid"]
+        cat2Count++
     }
     else if (item.Alcohol === 3) {
-        cat3Arr.push(item["Malic Acid"])
+        cat3 += item["Malic Acid"]
+        cat3Count++
     }
     else { }
-}
-)
-
-// fn to cal avg.
-const avg = (arr) => {
-    let sum = 0
-    for (let i of arr) {
-        sum += i
-    }
-    console.log(sum);
-    return sum / arr.length
-}
-
-let cat1 = avg(cat1Arr)
-let cat2 = avg(cat2Arr)
-let cat3 = avg(cat3Arr)
+})
+cat1 = cat1 / cat1Count
+cat2 = cat2 / cat2Count
+cat3 = cat3 / cat3Count
 
 
 const options = {
